@@ -67,6 +67,17 @@ async function run() {
       res.send(result); 
     });
 
+    //delete api
+
+    app.delete("/service/:id", async (req, res) => {
+      const { id } = req.params;
+      const querry = { _id: ObjectId(id) };
+
+      const result = await serviceCollection.deleteOne(querry);
+      res.send(result); 
+    });
+
+
   } finally {
     // await client.close();
   }
